@@ -16,6 +16,12 @@
 # include <cstddef>
 
 template <typename T>
+void	print_el(T const &e)
+{
+	std::cout << e << "\n";
+}
+
+template <typename T>
 void	iter(T *t_array, size_t const t_len, void (*t_f)(T const &))
 {
 	for (size_t i = 0; i < t_len; i++)

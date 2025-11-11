@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pjarnac <pjarnac@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 11:30:36 by pjarnac           #+#    #+#             */
-/*   Updated: 2025/11/05 11:30:36 by pjarnac          ###   ########.fr       */
+/*   Created: 2025/11/07 10:53:35 by pjarnac           #+#    #+#             */
+/*   Updated: 2025/11/07 10:53:35 by pjarnac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include "doctest.h"
-#include "iter.hpp"
+#ifndef ARRAY_HPP
+# define ARRAY_HPP
 
-TEST_CASE("iter")
+template <typename T>
+class Array
 {
-	int	test[5] = {1, 7, 8, 5, 6};
-	int const test2[5] = {5, 4, 3, 2, 1};
+private:
+	unsigned int	m_size;
+	T				*m_arr;
+public:
+	unsigned int	size() const;
+	T				&operator[](unsigned int t_i);
+	T const			&operator[](unsigned int t_i) const;
 
-	iter(test, 5, print_el);
-	iter<int const>(test2, 5, print_el<int>);
-}
+	Array();
+	explicit Array(unsigned int t_n);
+	Array(Array const &t_e);
+	Array	&operator=(Array const &t_e);
+	~Array();
+};
+
+# include "Array.tpp"
+
+#endif

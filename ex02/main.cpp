@@ -5,20 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pjarnac <pjarnac@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 11:30:36 by pjarnac           #+#    #+#             */
-/*   Updated: 2025/11/05 11:30:36 by pjarnac          ###   ########.fr       */
+/*   Created: 2025/11/07 10:51:11 by pjarnac           #+#    #+#             */
+/*   Updated: 2025/11/07 10:51:11 by pjarnac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include "Array.hpp"
 #include "doctest.h"
-#include "iter.hpp"
 
-TEST_CASE("iter")
+TEST_CASE("array")
 {
-	int	test[5] = {1, 7, 8, 5, 6};
-	int const test2[5] = {5, 4, 3, 2, 1};
+	Array<int>	test1;
+	Array<int>	test2(45);
+	Array<int>	test3(test2);
+	Array<std::string>	test4;
 
-	iter(test, 5, print_el);
-	iter<int const>(test2, 5, print_el<int>);
+	// test3 = test4;
+
+	test3[5] = 42;
+	CHECK(test3[5] == 42);
+	CHECK(test2[7] == 0);
+	test1 = test3;
+	test3[5] = 8;
+	CHECK(test1[5] == 42);
+	CHECK(test1.size() == 45);
+	CHECK_THROWS_AS(test1[45], std::exception);
 }
