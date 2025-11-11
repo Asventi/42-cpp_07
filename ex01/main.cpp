@@ -19,6 +19,6 @@ TEST_CASE("iter")
 	int	test[5] = {1, 7, 8, 5, 6};
 	int const test2[5] = {5, 4, 3, 2, 1};
 
-	iter(test, 5, print_el);
-	iter<int const>(test2, 5, print_el<int>);
+	iter(test, 5, print_el<int>);
+	iter(test2, 5, print_el<int const>);
 }

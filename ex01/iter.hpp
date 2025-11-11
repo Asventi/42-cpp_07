@@ -16,13 +16,13 @@
 # include <cstddef>
 
 template <typename T>
-void	print_el(T const &e)
+void	print_el(T &e)
 {
 	std::cout << e << "\n";
 }
 
-template <typename T>
-void	iter(T *t_array, size_t const t_len, void (*t_f)(T const &))
+template <typename T, typename U>
+void	iter(T *t_array, size_t const t_len, void (*t_f)(U &))
 {
 	for (size_t i = 0; i < t_len; i++)
 		t_f(t_array[i]);

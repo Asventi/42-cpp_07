@@ -42,19 +42,19 @@ T const	&Array<T>::operator[](unsigned int t_i) const
 template<typename T>
 Array<T>::Array(): m_size(0)
 {
-	m_arr = new T[0];
+	m_arr = new T[0]();
 }
 
 template<typename T>
 Array<T>::Array(unsigned int t_n): m_size(t_n)
 {
-	m_arr = new T[m_size];
+	m_arr = new T[m_size]();
 }
 
 template<typename T>
 Array<T>::Array(Array const &t_e): m_size(t_e.m_size)
 {
-	m_arr = new T[m_size];
+	m_arr = new T[m_size]();
 	for (unsigned int i = 0; i< m_size; i++)
 		m_arr[i] = t_e.m_arr[i];
 }
@@ -66,7 +66,7 @@ Array<T>	&Array<T>::operator=(Array const &t_e)
 		return (*this);
 	delete [] m_arr;
 	m_size = t_e.m_size;
-	m_arr = new T[m_size];
+	m_arr = new T[m_size]();
 	for (unsigned int i = 0; i < m_size; i++)
 		m_arr[i] = t_e.m_arr[i];
 	return (*this);
